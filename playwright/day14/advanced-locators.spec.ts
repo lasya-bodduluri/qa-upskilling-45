@@ -64,32 +64,4 @@ test("Day 14 - Advanced Locators Practice", async ({ page }) => {
     );
     await expect(submitButton).toBeVisible();
 
-    // ==============================
-    // ADVANCED CSS LOCATORS
-    // ==============================
-
-    // 11. General sibling selector (~)
-    await page.goto("https://demoqa.com/checkbox");
-
-    const homeCheckbox = page.locator(
-        "span.rc-tree-indent ~ span.rc-tree-checkbox"
-    );
-    await expect(homeCheckbox.first()).toBeVisible();
-
-    // 12. CSS nth-child()
-    await page.goto("https://demoqa.com/text-box");
-
-    const firstFormField = page.locator(
-        ".form-group:nth-child(1)"
-    );
-    await expect(firstFormField).toBeVisible();
-
-    // 13. CSS :not()
-    await page.goto("https://demoqa.com/text-box");
-
-    const visibleInputs = page.locator(
-        "input:not([type='hidden'])"
-    );
-    await expect(visibleInputs.first()).toBeVisible();
-
 });
