@@ -2,10 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test('Day 16 - Form Automation', async ({ page }) => {
 
-    await page.goto(
-        'https://www.selenium.dev/selenium/web/web-form.html'
-    );
-
+    await page.goto('https://www.selenium.dev/selenium/web/web-form.html');
 
     // --------------------------------
     // 1. TEXT INPUT
@@ -36,11 +33,6 @@ test('Day 16 - Form Automation', async ({ page }) => {
     // 3. GET ATTRIBUTE
     // --------------------------------
 
-    const placeholder =
-        await textInput.getAttribute('placeholder');
-
-    console.log('Placeholder:', placeholder);
-
 
     // --------------------------------
     // 4. NATIVE DROPDOWN
@@ -49,9 +41,7 @@ test('Day 16 - Form Automation', async ({ page }) => {
     const dropdown =
         page.locator('[name="my-select"]');
 
-    await dropdown.selectOption({
-        label: 'Two'
-    });
+    await dropdown.selectOption({label: 'Two'});
 
     await expect(dropdown).toHaveValue('2');
 
@@ -60,8 +50,7 @@ test('Day 16 - Form Automation', async ({ page }) => {
     // 5. CHECKBOX
     // --------------------------------
 
-    const checkbox =
-        page.locator('#my-check-1');
+    const checkbox = page.locator('#my-check-1');
 
     await checkbox.check();
 
@@ -72,8 +61,7 @@ test('Day 16 - Form Automation', async ({ page }) => {
     // 6. RADIO BUTTON
     // --------------------------------
 
-    const radio =
-        page.locator('#my-radio-2');
+    const radio = page.locator('#my-radio-2');
 
     await radio.check();
 
@@ -84,8 +72,7 @@ test('Day 16 - Form Automation', async ({ page }) => {
     // 7. SUBMIT BUTTON
     // --------------------------------
 
-    const submitButton =
-        page.locator('button');
+    const submitButton = page.locator('button');
 
     await expect(submitButton).toBeVisible();
     await expect(submitButton).toBeEnabled();
