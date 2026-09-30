@@ -16,7 +16,6 @@ test('Day 19 - Advanced Actions', async ({ page }) => {
 
     await expect(profileLink).toBeVisible();
 
-
     // -----------------------------
     // Exercise 2: JavaScript scroll
     // -----------------------------
