@@ -1,12 +1,13 @@
 package day21;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import day22_pages.HomePage;
+import day22_pages.LoginPage;
 
 public class SauceDemoLoginTest {
 
@@ -14,7 +15,6 @@ public class SauceDemoLoginTest {
 
     @BeforeMethod
     public void setUp() {
-
         driver = new ChromeDriver();
         driver.get("https://www.saucedemo.com/");
     }
@@ -22,19 +22,22 @@ public class SauceDemoLoginTest {
     @Test(groups = "smoke")
     public void loginTest() {
 
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
+        LoginPage loginPage = new LoginPage(driver);
 
-        driver.findElement(By.name("password")).sendKeys("secret_sauce");
+        loginPage.enterUsername("standard_user");
+        loginPage.enterPassword("secret_sauce");
 
-        driver.findElement(By.id("login-button")).click();
+        HomePage homePage = loginPage.clickLogin();
 
-        Assert.assertTrue(driver.getCurrentUrl().contains("inventory.html"));
+        Assert.assertTrue(homePage.isInventoryPageDisplayed(), "Login should open the inventory page");
 
-        Assert.assertTrue(driver.findElement(By.className("title")).isDisplayed());
+        Assert.assertEquals(homePage.getPageTitle(), "Products", "The page title should be Products");
     }
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 }

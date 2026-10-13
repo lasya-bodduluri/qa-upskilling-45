@@ -20,13 +20,9 @@ public class FormAutomationTest {
 
         WebElement textInput = driver.findElement(By.name("my-text"));
 
-        System.out.println(
-                "Text input displayed: " + textInput.isDisplayed()
-        );
+        System.out.println("Text input displayed: " + textInput.isDisplayed());
 
-        System.out.println(
-                "Text input enabled: " + textInput.isEnabled()
-        );
+        System.out.println("Text input enabled: " + textInput.isEnabled());
 
         textInput.sendKeys("Lasya");
 
@@ -41,10 +37,7 @@ public class FormAutomationTest {
 
         textInput.sendKeys("QA Automation");
 
-        System.out.println(
-                "Text after clear and re-entry: "
-                        + textInput.getAttribute("value")
-        );
+        System.out.println("Text after clear and re-entry: " + textInput.getAttribute("value"));
 
 
         // -----------------------------
@@ -53,41 +46,32 @@ public class FormAutomationTest {
 
         String placeholder = textInput.getAttribute("placeholder");
 
-        System.out.println(
-                "Placeholder: " + placeholder
-        );
+        System.out.println("Placeholder: " + placeholder);
 
 
         // -----------------------------
         // 3. DROPDOWN
         // -----------------------------
 
-        WebElement dropdownElement =
-                driver.findElement(By.name("my-select"));
+        WebElement dropdownElement = driver.findElement(By.name("my-select"));
 
         Select dropdown = new Select(dropdownElement);
 
         dropdown.selectByVisibleText("Two");
 
-        String selectedOption =
-                dropdown.getFirstSelectedOption().getText();
+        String selectedOption = dropdown.getFirstSelectedOption().getText();
 
         if (selectedOption.equals("Two")) {
             System.out.println("Dropdown selected successfully");
         }
 
-
         // -----------------------------
         // 4. CHECKBOX
         // -----------------------------
 
-        WebElement checkbox =
-                driver.findElement(By.id("my-check-1"));
+        WebElement checkbox = driver.findElement(By.id("my-check-1"));
 
-        System.out.println(
-                "Checkbox initially selected: "
-                        + checkbox.isSelected()
-        );
+        System.out.println("Checkbox initially selected: " + checkbox.isSelected());
 
         if (!checkbox.isSelected()) {
             checkbox.click();
@@ -102,8 +86,7 @@ public class FormAutomationTest {
         // 5. RADIO BUTTON
         // -----------------------------
 
-        WebElement radio =
-                driver.findElement(By.id("my-radio-2"));
+        WebElement radio = driver.findElement(By.id("my-radio-2"));
 
         radio.click();
 
